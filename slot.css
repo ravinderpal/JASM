@@ -1,5 +1,5 @@
 body{
-  padding-top:100px;
+  padding-top:5%;
   text-align:center;
   background-color:#bde212;
 }
@@ -9,17 +9,19 @@ body{
     font-size:40;
 }
 
+#result{
+  font-size:20;
+}
+
 .btn{
-  padding:20px;
+  padding:15px;
   margin:20px;
   font-size:20px;
+  width:150px;
 }
 
 .item{
   display:inline;
-  font-size:50;
-}
-
-#result{
-  font-size:20;
+  font-size:200;
+  margin: 30px;
 }

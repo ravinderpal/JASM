@@ -8,29 +8,34 @@ function canSpin(){
   if(tokens>0)
     spin()
   else
-    swal({title: "Want to restart?",
+    swal({title: "Wanna play again?",
           type: "warning",
           showCancelButton: true,
-          confirmButtonColor: "#DD6B55",
+          confirmButtonColor: "#6BDD55",
           confirmButtonText: "Yes, of course!",
           closeOnConfirm: false },
           function(){
             reset()
-            swal("Welcome!",
+            swal("Let's restart!",
                 "You have got " + tokens + " tokens",
                 "success"); });
 }
 
 function reset(){
   tokens=MAX_TOKENS
+  document.getElementById("result").innerHTML = tokens + " tokens left"
+  document.getElementById("btSpin").innerHTML="Spin!"
 }
 
 function spin(){
   tokens--
+  if(tokens==0)
+    document.getElementById("btSpin").innerHTML="End!"
   for(i=0;i<nItems;i++)
     items[i]=document.getElementById("slot").getElementsByClassName("item")[i].innerHTML=getRandom()
   printResult()
   document.getElementById("result").innerHTML = tokens + " tokens left"
+
 }
 
 function getRandom(){
@@ -54,6 +59,7 @@ function printResult(){
 }
 
 window.onload = function(){
+  reset()
   swal({title: "Welcome human!",
       text: "Let's start gambling!",
       imageUrl: "./asserts/slotLogo.png" });
