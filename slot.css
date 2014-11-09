@@ -1,7 +1,12 @@
 body{
-  padding-top:5%;
   text-align:center;
-  background-color:#bde212;
+  background:url("./asserts/slots-wallpaper.jpg") no-repeat center center fixed;
+  /*background-repeat: no-repeat;
+  background-position: top;
+  background-position: center;
+  background-position: fixed;*/
+  background-size:cover;
+  color:#000;
 }
 
 #title{
@@ -10,7 +15,7 @@ body{
 }
 
 #result{
-  font-size:20;
+  font-size:30;
 }
 
 .btn{
@@ -22,6 +27,19 @@ body{
 
 .item{
   display:inline;
-  font-size:200;
+  font-size:500;
+  fill:#222;
   margin: 30px;
+  font-family: sans-serif;
+}
+
+rect{
+  stroke:#abc;
+  fill:rgba(155,155,255,0.5);
+  stroke-width:10px;
+}
+
+img{
+  heigth:300px;
+  width:450px;
 }

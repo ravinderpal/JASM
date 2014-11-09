@@ -9,16 +9,22 @@
   </head>
   <body>
 
-    <div id="title">Slot Machine</div>
-      <div id="slot">
+    <img src="./asserts/CashinoLogo.png">
 
-        <div class="item">1</div>
-        <div class="item">2</div>
-        <div class="item">3</div>
+    <div id="slot">
 
-        <div id="result"> scritta vecchia</div>
+      <svg width="550" height="250" viewBox="0 0 1600 500">
+        <rect x="0" y="10" width="500" height="500"></rect>
+        <rect x="550" y="10" width="500" height="500"></rect>
+        <rect x="1100" y="10" width="500" height="500"></rect>
+        <text class="item" x="100" y="415">1</text>
+        <text class="item" x="650" y="415">2</text>
+        <text class="item" x="1200" y="415">3</text>
+      </svg>
 
-        <button class="btn btn-primary btn-lg" id="btSpin" onClick="canSpin()">Spin!</button>
+      <div id="result"> </div>
+
+      <button class="btn btn-warning btn-lg" id="btSpin" onClick="canSpin()">Spin!</button>
 
      </div>
 

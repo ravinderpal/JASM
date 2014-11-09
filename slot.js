@@ -45,13 +45,14 @@ function getRandom(){
 function printResult(){
   if(items[0]==items[1] || items[1]==items[2])
     if(items[0]==items[2]){
-      document.getElementById("result").innerHTML="JACKPOT!!!"
       swal("JACKPOT!", "Great!!!", "success")
+      tokens+=10
     }
-    else {document.getElementById("result").innerHTML="COPPIA!!!"
-      swal({title: "COMPLIMENTI!",
-            text: "Hai fatto coppia!",
-            timer: 2000 });
+    else {
+      swal({title: "COOL!",
+            text: "You got a DOUBLE!",
+            timer: 1200 });
+      tokens++
     }
   else{
     document.getElementById("result").innerHTML = "Ritenta!"
