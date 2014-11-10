@@ -55,7 +55,7 @@ function printResult(){
   document.getElementById("result").innerHTML = tokens + " tokens left"
   if(items[0]==items[1] || items[1]==items[2])
     if(items[0]==items[2]){
-      swal({title:"JACKPOT!", text:"Great!!!", imageUrl:"./asserts/jackpot.png"})
+      swal({title:"JACKPOT!", text:"Great!!!", imageUrl:"./asserts/jackpot2.png"})
       tokens+=10
       nJackpot++
     }
@@ -66,9 +66,7 @@ function printResult(){
       tokens++
       nDouble++
     }
-  else{
-    document.getElementById("result").innerHTML = "Ritenta!"
-  }
+  document.getElementById("result").innerHTML = tokens + " tokens left"
 }
 
 window.onload = function(){
