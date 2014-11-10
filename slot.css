@@ -2,11 +2,11 @@ body{
   text-align:center;
   background:url("./asserts/slots-wallpaper.jpg") no-repeat center center fixed;
   /*background-repeat: no-repeat;
-  background-position: top;
+  background-position: center;
   background-position: center;
   background-position: fixed;*/
   background-size:cover;
-  color:#000;
+  color:#eee;
 }
 
 #title{
@@ -26,7 +26,6 @@ body{
 }
 
 .item{
-  display:inline;
   font-size:500;
   fill:#222;
   margin: 30px;
