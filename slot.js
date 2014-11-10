@@ -39,8 +39,6 @@ function spin(){
   for(i=0;i<nItems;i++)
     items[i]=document.getElementById("slot").getElementsByClassName("item")[i].innerHTML=getRandom()
   printResult()
-  document.getElementById("result").innerHTML = tokens + " tokens left"
-
 }
 
 function fastspin(arg){ // Fa partire la rotazione dei numeri e ritona l'handler
@@ -54,15 +52,16 @@ function getRandom(){
 }
 
 function printResult(){
+  document.getElementById("result").innerHTML = tokens + " tokens left"
   if(items[0]==items[1] || items[1]==items[2])
     if(items[0]==items[2]){
-      swal("JACKPOT!", "Great!!!", "success")
+      swal({title:"JACKPOT!", text:"Great!!!", imageUrl:"./asserts/jackpot.png"})
       tokens+=10
       nJackpot++
     }
     else {
-      swal({title: "COOL!",
-            text: "You got a DOUBLE!",
+      swal({title: "DOUBLE!!!",
+            text: "COOL! You got a DOUBLE!",
             timer: 2000 });
       tokens++
       nDouble++
@@ -78,4 +77,13 @@ window.onload = function(){
       text: "Let's start gambling!",
       imageUrl: "./asserts/slotLogo.png" });
 
+}
+
+
+
+
+function godMode(){
+  for(i=0;i<nItems;i++)
+    document.getElementById("slot").getElementsByClassName("item")[i].innerHTML=7
+  printResult()
 }
