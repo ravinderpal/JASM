@@ -1,14 +1,14 @@
-MAX_TOKENS=5
-
-nItems=3
-nDouble=0
-nJackpot=0
-tokens=MAX_TOKENS
-items=new Array()
+tokens = MAX_TOKENS = 5
+nItems = 3
+nDouble = 0
+nJackpot = 0
+ch = 0
+spinning = false
+items = new Array()
 
 function canSpin(){
   if(tokens>0)
-    spin()
+    spinNum=window.setInterval(spin, 100)
   else
     swal({title: "Wanna play again?",
           text: "You got "+nDouble+" Double and "+nJackpot+" Jackpot",
@@ -24,35 +24,22 @@ function canSpin(){
                 "success"); });
 }
 
-function reset(){
-  tokens=MAX_TOKENS
-  document.getElementById("result").innerHTML = tokens + " tokens left"
-  document.getElementById("btSpin").innerHTML="Spin!"
-  nDouble=0
-  nJackpot=0
-}
-
 function spin(){
-  tokens--
-  if(tokens==0)
-    document.getElementById("btSpin").innerHTML="End!"
   for(i=0;i<nItems;i++)
-    items[i]=document.getElementById("slot").getElementsByClassName("item")[i].innerHTML=getRandom()
-  printResult()
-}
-
-function fastspin(arg){ // Fa partire la rotazione dei numeri e ritona l'handler
-  return window.setInterval(function(){
-    arg.innerHTML = Math.ceil(Math.random() * 7)
-  },50)
-}
-
-function getRandom(){
-  return parseInt(Math.random()*7)
+    document.getElementById("slot").getElementsByClassName("item")[i].innerHTML=getRandom()
+  ch++
+  if (ch==5){
+    window.clearInterval(spinNum);
+    ch=0;
+    tokens--
+    printResult()}
 }
 
 function printResult(){
-  document.getElementById("result").innerHTML = tokens + " tokens left"
+  if(tokens==0)
+    document.getElementById("btSpin").innerHTML="End!"
+  for(i=0;i<nItems;i++)
+    items[i]=document.getElementById("slot").getElementsByClassName("item")[i].innerHTML
   if(items[0]==items[1] || items[1]==items[2])
     if(items[0]==items[2]){
       swal({title:"JACKPOT!", text:"Great!!!", imageUrl:"./asserts/jackpot2.png"})
@@ -69,6 +56,18 @@ function printResult(){
   document.getElementById("result").innerHTML = tokens + " tokens left"
 }
 
+function reset(){
+  tokens=MAX_TOKENS
+  document.getElementById("result").innerHTML = tokens + " tokens left"
+  document.getElementById("btSpin").innerHTML = "Spin!"
+  nDouble=0
+  nJackpot=0
+}
+
+function getRandom(){
+  return parseInt(Math.random()*7)
+}
+
 window.onload = function(){
   reset()
   swal({title: "Welcome human!",
@@ -77,9 +76,7 @@ window.onload = function(){
 
 }
 
-
-
-
+//in case you want to win always
 function godMode(){
   for(i=0;i<nItems;i++)
     document.getElementById("slot").getElementsByClassName("item")[i].innerHTML=7
