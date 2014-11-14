@@ -2,13 +2,14 @@ tokens = MAX_TOKENS = 5
 nItems = 3
 nDouble = 0
 nJackpot = 0
+nSpin = 60
 ch = 0
 spinning = false
 items = new Array()
 
 function canSpin(){
   if(tokens>0)
-    spinNum=window.setInterval(spin, 100)
+    spinNum=window.setInterval(spin, 50)
   else
     swal({title: "Wanna play again?",
           text: "You got "+nDouble+" Double and "+nJackpot+" Jackpot",
@@ -25,10 +26,15 @@ function canSpin(){
 }
 
 function spin(){
-  for(i=0;i<nItems;i++)
-    document.getElementById("slot").getElementsByClassName("item")[i].innerHTML=getRandom()
+  for(i=0;i<nItems;i++){
+    if(ch<nSpin/3)
+      document.getElementById("slot").getElementsByClassName("item")[0].innerHTML=getRandom()
+    if(ch<nSpin/3*2)
+      document.getElementById("slot").getElementsByClassName("item")[1].innerHTML=getRandom()
+    document.getElementById("slot").getElementsByClassName("item")[2].innerHTML=getRandom()
+  }
   ch++
-  if (ch==5){
+  if (ch==nSpin){
     window.clearInterval(spinNum);
     ch=0;
     tokens--
