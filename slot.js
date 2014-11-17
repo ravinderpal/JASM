@@ -48,7 +48,7 @@ function printResult(){
     items[i]=document.getElementById("slot").getElementsByClassName("item")[i].innerHTML
   if(items[0]==items[1] || items[1]==items[2])
     if(items[0]==items[2]){
-      swal({title:"JACKPOT!", text:"Great!!!", imageUrl:"./asserts/jackpot2.png"})
+      swal({title:"JACKPOT!", text:"Great!!!", imageUrl:"./asserts/jackpot2.png", imageSize:"250x250"})
       tokens+=10
       nJackpot++
     }
@@ -78,7 +78,7 @@ window.onload = function(){
   reset()
   swal({title: "Welcome human!",
       text: "Let's start gambling!",
-      imageUrl: "./asserts/slotLogo.png" });
+      imageUrl: "./asserts/slotLogo.png"});
 
 }
 
