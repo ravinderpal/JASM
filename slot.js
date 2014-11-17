@@ -3,13 +3,21 @@ nItems = 3
 nDouble = 0
 nJackpot = 0
 nSpin = 60
-ch = 0
-spinning = false
+ch = 0 // number of times the slot's numbers changes
 items = new Array()
 
+window.onload = function(){
+  reset()
+  swal({title: "Welcome human!",
+      text: "Let's start gambling!",
+      imageUrl: "./asserts/slotLogo.png"});
+}
+
 function canSpin(){
-  if(tokens>0)
+  if(tokens>0){
+    btSpin.disabled=true
     spinNum=window.setInterval(spin, 50)
+    }
   else
     swal({title: "Wanna play again?",
           text: "You got "+nDouble+" Double and "+nJackpot+" Jackpot",
@@ -21,7 +29,7 @@ function canSpin(){
           function(){
             reset()
             swal("Let's restart!",
-                "You have got " + tokens + " tokens",
+                "You start with " + tokens + " tokens",
                 "success"); });
 }
 
@@ -38,6 +46,7 @@ function spin(){
     window.clearInterval(spinNum);
     ch=0;
     tokens--
+    btSpin.disabled=false
     printResult()}
 }
 
@@ -72,19 +81,4 @@ function reset(){
 
 function getRandom(){
   return parseInt(Math.random()*7)
-}
-
-window.onload = function(){
-  reset()
-  swal({title: "Welcome human!",
-      text: "Let's start gambling!",
-      imageUrl: "./asserts/slotLogo.png"});
-
-}
-
-//in case you want to win always
-function godMode(){
-  for(i=0;i<nItems;i++)
-    document.getElementById("slot").getElementsByClassName("item")[i].innerHTML=7
-  printResult()
 }
